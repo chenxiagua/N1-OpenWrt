@@ -1,5 +1,13 @@
 #!/bin/bash
-
+rm -rf feeds/packages/net/v2ray-geodata
+git clone https://github.com/morytyann/OpenWrt-mihomo package/luci-app-mihomo
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+# 插件
+echo "
+CONFIG_PACKAGE_luci-app-mosdns=y
+CONFIG_PACKAGE_luci-app-mihomo=y
+" >> .config
 # Default IP
 sed -i 's/192.168.1.1/192.168.3.2/g' package/base-files/files/bin/config_generate
 
